@@ -6,16 +6,16 @@ import Header from '../components/Header';
    INITIAL USER STATE
  */
 const INITIAL_USER = {
-  name: 'Tanishq Verma',
-  username: '@tanishq.verma',
-  avatar: 'https://avatars.githubusercontent.com/u/185518962?s=400&u=3064ad82532b7b0473ef22110b342e4bf760aeb3&v=4',
-  location: 'Rajpura, Punjab',
-  joined: 'January 2026',
-  badge: 'Verified Reclaimer',
-  bio: 'Second-year student. Building things that help people. Lost my keys once — never again.',
-  dob: '2004-08-14',
-  gender: 'Male',
-  nationality: 'Indian',
+  name: 'Tanishq Verma',       // comes from register
+  username: '@tanishq.verma', // auto-generated on register
+  avatar: null,
+  location: null,
+  joined: null,
+  badge: null,
+  bio: null,
+  dob: null,
+  gender: null,
+  nationality: null,
 };
 
 /* 
@@ -74,7 +74,7 @@ const ProfileHeader = ({ user, onAvatarChange }) => {
         {/* Avatar with upload hover */}
         <div className="relative flex-shrink-0 group cursor-pointer" onClick={() => fileRef.current.click()}>
           <img
-            src={user.avatar}
+            src={user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=84cc16&color=fff&size=128`}
             alt={user.name}
             className="w-20 h-20 rounded-full object-cover border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
           />
@@ -275,11 +275,11 @@ const CONTACT_DEFS = [
 const ContactInfo = () => {
   const [editing, setEditing] = useState(false);
   const [values, setValues] = useState({
-    email: 'tanishq@xenora.app',
-    phone: '+92 300 1234567',
-    whatsapp: '+92 300 1234567',
-    instagram: '@tanishq.__.verma',
-    discord: 'tanishq#0001',
+    email: '',
+    phone: '',
+    whatsapp: '',
+    instagram: '',
+    discord: '',
   });
 
   const [visibility, setVisibility] = useState({
